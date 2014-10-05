@@ -1,64 +1,77 @@
-.PHONY: clean-pyc clean-build docs clean
+.PHONY: clean deps develop docs clean-build lint test coverage coverage-html tox migrate runserver
+PYTEST_OPTS :=
+COVER := sleepy
+APP := src/
 
 help:
-	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "clean-build - remove build artifacts"
 	@echo "clean-pyc - remove Python file artifacts"
-	@echo "clean-test - remove test and coverage artifacts"
+	@echo "develop - install all packages required for development"
 	@echo "lint - check style with flake8"
 	@echo "test - run tests quickly with the default Python"
-	@echo "test-all - run tests on every Python version with tox"
-	@echo "coverage - check code coverage quickly with the default Python"
 	@echo "docs - generate Sphinx HTML documentation, including API docs"
-	@echo "release - package and upload a release"
-	@echo "dist - package"
+	@echo "coverage - generate test coverage report"
+	@echo "coverage-html - generate test coverage report, html output"
+	@echo "tox - Run all tests in a tox container"
 
-clean: clean-build clean-pyc clean-test
 
-clean-build:
-	rm -fr build/
-	rm -fr dist/
-	rm -fr *.egg-info
+clean: clean-build clean-pyc
 
-clean-pyc:
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -name '__pycache__' -exec rm -fr {} +
+deps:
+	pip install -e .
+	pip install "file://`pwd`#egg=sleepy[tox]"
+	pip install "file://`pwd`#egg=sleepy[docs]"
+	pip install "file://`pwd`#egg=sleepy[tests]"
+	pip install "file://`pwd`#egg=sleepy[postgresql]"
 
-clean-test:
-	rm -fr .tox/
-	rm -f .coverage
-	rm -fr htmlcov/
+develop: deps
+	if test -z "$$TRAVIS"; then pip install nodeenv && nodeenv -p; fi; \
 
-lint:
-	flake8 youneedtosleep tests
+	# Install nodejs dependencies
+	npm install
 
-test:
-	python setup.py test
+	# Install bower dependencies
+	bower update
 
-test-all:
-	tox
+	# Extract CLDR from babel source installation
+	$(shell ./extras/import_cldr.sh)
 
-coverage:
-	coverage run --source youneedtosleep setup.py test
-	coverage report -m
-	coverage html
-	open htmlcov/index.html
-
-docs:
-	rm -f docs/youneedtosleep.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ youneedtosleep
+docs: clean-build
+	sphinx-apidoc --force -o docs/source/modules/ src/sleepy src/sleepy/migrations src/sleepy/tests src/sleepy/settings.py
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
-	open docs/_build/html/index.html
 
-release: clean
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+clean-build:
+	rm -fr build/ src/build
+	rm -fr dist/ src/dist
+	rm -fr *.egg-info src/*.egg-info
+	rm -fr htmlcov/
+	$(MAKE) -C docs clean
 
-dist: clean
-	python setup.py sdist
-	python setup.py bdist_wheel
-	ls -l dist
+lint:
+	flake8 sleepy --ignore='E122,E124,E125,E126,E128,E501,F403' --exclude="**/migrations/**"
+
+test:
+	py.test ${PYTEST_OPTS} ${APP}
+
+migrate:
+	python manage.py migrate
+
+runserver:
+	python manage.py runserver
+
+coverage:
+	py.test --cov=${COVER} --cov-report=term-missing ${PYTEST_OPTS} ${APP}
+
+coverage-html:
+	py.test --cov=${COVER} --cov-report=html ${PYTEST_OPTS} ${APP}
+
+tox:
+	tox
+
+i18n:
+	python manage.py babel makemessages -d django -l de
+	python manage.py babel compilemessages -d django -l de
+	python manage.py babel makemessages -d djangojs -l de
+	python manage.py babel compilemessages -d djangojs -l de
+	python manage.py compilejsi18n -d djangojs -l de

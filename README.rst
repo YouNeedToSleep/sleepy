@@ -2,20 +2,17 @@
 YouNeedToSleep
 ===============================
 
-.. image:: https://badge.fury.io/py/youneedtosleep.png
-    :target: http://badge.fury.io/py/youneedtosleep
+.. image:: https://badge.fury.io/py/sleepy.png
+    :target: http://badge.fury.io/py/sleepy
 
-.. image:: https://travis-ci.org/YouNeedToSleep/youneedtosleep.png?branch=master
-        :target: https://travis-ci.org/YouNeedToSleep/youneedtosleep
-
-.. image:: https://pypip.in/d/youneedtosleep/badge.png
-        :target: https://pypi.python.org/pypi/youneedtosleep
+.. image:: https://travis-ci.org/YouNeedToSleep/sleepy.png?branch=master
+        :target: https://travis-ci.org/YouNeedToSleep/sleepy
 
 
 Time Tracker
 
 * Free software: BSD license
-* Documentation: https://youneedtosleep.readthedocs.org.
+* Documentation: https://sleepy.readthedocs.org.
 
 Features
 --------

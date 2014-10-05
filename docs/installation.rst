@@ -4,9 +4,9 @@ Installation
 
 At the command line::
 
-    $ easy_install youneedtosleep
+    $ easy_install sleepy
 
 Or, if you have virtualenvwrapper installed::
 
-    $ mkvirtualenv youneedtosleep
-    $ pip install youneedtosleep
+    $ mkvirtualenv sleepy
+    $ pip install sleepy
