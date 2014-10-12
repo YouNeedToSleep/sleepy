@@ -14,7 +14,9 @@
     "grunt-contrib-sass": "^0.8.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jscs": "^0.7.1",
+    "grunt-jscs-checker": "*",
     "grunt-lintspaces": "^0.6.0",
+    "grunt-sass": "*",
     "merge": "^1.2.0",
     "node-sass": "^0.9.5"
   },
