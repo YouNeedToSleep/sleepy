@@ -57,6 +57,10 @@ install_requires = [
 
     # Filtering support for the API
     #'django-filter',
+
+    # Our data storage backend
+    'elasticsearch',
+    'elasticsearch-dsl',
 ]
 
 
