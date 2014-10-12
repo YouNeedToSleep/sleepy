@@ -37,26 +37,21 @@ install_requires = [
     # General dependencies
     'django>=1.7,<1.8',
 
-    # For async worker support
-    'celery>=3.1.15,<3.2',
-    'django-celery>=3.1.16,<3.2',
-
     # i18n/l10n,
     'babel>=1.3',
     'django-babel-underscore>=0.1.0',
     'django-statici18n>=1.1',
-    #'django-babel>=0.3.6',
+    'django-babel>=0.3.6',
 
     # For our REST Api
     'djangorestframework>=2.4.3,<2.5',
     'requests>=2.4.1,<2.5',
 
-    # TODO: Enable and test when I have Intenet again (cg)
     # Markdown support for browsable api
-    #'markdown',
+    'markdown',
 
     # Filtering support for the API
-    #'django-filter',
+    'django-filter',
 
     # Our data storage backend
     'elasticsearch',
@@ -90,7 +85,6 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages('src'),
     include_package_data=True,
-    test_suite='src',
     tests_require=test_requires,
     install_requires=install_requires,
     extras_require={

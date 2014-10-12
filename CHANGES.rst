@@ -1,3 +1,5 @@
+.. :changelog:
+
 Sleepy ChangeLog
 ================
 

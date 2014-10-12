@@ -38,6 +38,21 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
 # Translations
 *.mo
 
@@ -45,13 +60,6 @@ coverage.xml
 .mr.developer.cfg
 .project
 .pydevproject
-
-# Rope
-.ropeproject
-
-# Django stuff:
-*.log
-*.pot
 
 # Sphinx documentation
 docs/_build/

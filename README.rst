@@ -2,9 +2,6 @@
 YouNeedToSleep - Simple and effective time tracking.
 ====================================================
 
-.. image:: https://badge.fury.io/py/sleepy.png
-    :target: http://badge.fury.io/py/sleepy
-
 .. image:: https://travis-ci.org/sleepy/sleepy.png?branch=master
         :target: https://travis-ci.org/sleepy/sleepy
 
@@ -133,3 +130,18 @@ Resources
 * `Documentation <http://youneedtosleep.today/docs/>`_
 * `Bug Tracker <https://github.com/YouNeedToSleep/sleepy/issues>`_
 * `Code <https://github.com/YouNeedToSleep/sleepy>`_
+=======
+.. image:: https://travis-ci.org/YouNeedToSleep/sleepy.png?branch=master
+        :target: https://travis-ci.org/YouNeedToSleep/sleepy
+
+
+Time Tracker
+
+* Free software: BSD license
+* Documentation: https://sleepy.readthedocs.org.
+
+Features
+--------
+
+* TODO
+>>>>>>> 718a6fd16077fb2cd8f323cf92355ab9b9ed587b
