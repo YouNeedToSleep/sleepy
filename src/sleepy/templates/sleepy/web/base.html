@@ -1,0 +1,24 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}YouNeedToSleep Today{% endblock title %}</title>
+
+    {% block styles %}
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+    {% endblock styles %}
+</head>
+<body>
+{% block content %}
+{% endblock content %}
+
+{% block content-js %}
+<script type="text/javascript" src="{% static "jquery/dist/jquery.min.js" %}"></script>
+<script type="text/javascript" src="{% static "foundation/js/foundation.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/app.js" %}"></script>
+<script type="text/javascript" src="{% static "js/livereload.js" %}?host=sleepy.local"></script>
+{% endblock content-js %}
+</body>
+</html>

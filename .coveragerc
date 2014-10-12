@@ -1,0 +1,9 @@
+[run]
+branch = True
+source = src/sleepy/
+include = src/sleepy*
+omit =
+    src/sleepy/conf/*.py
+    *urls.py
+    src/sleepy/wsgi.py
+    *migrations*

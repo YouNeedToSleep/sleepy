@@ -1,0 +1,12 @@
+{
+  "name": "sleepy",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "foundation": "zurb/bower-foundation#5.4.5"
+  },
+  "authors": [
+    "Christopher Grebs <cg@webshox.org>"
+  ],
+  "license": "BSD"
+}
