@@ -116,7 +116,7 @@ __connector.Connector = Connector = (function() {
     this.WebSocket = WebSocket;
     this.Timer = Timer;
     this.handlers = handlers;
-    this._uri = "wss://" + this.options.host + ":" + this.options.port + "/livereload";
+    this._uri = "ws://" + this.options.host + ":" + this.options.port + "/livereload";
     console.log("livereload listening on ", this._uri)
     this._nextDelay = this.options.mindelay;
     this._connectionDesired = false;
