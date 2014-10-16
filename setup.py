@@ -47,6 +47,10 @@ install_requires = [
     'djangorestframework>=2.4.3,<2.5',
     'requests>=2.4.1,<2.5',
 
+    'python-social-auth>=0.1.25',
+    'requests>=2.3.0',
+    'requests-oauthlib>=0.4.1',
+
     # Markdown support for browsable api
     'markdown',
 
