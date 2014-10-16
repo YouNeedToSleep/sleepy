@@ -27,3 +27,7 @@ SOCIAL_AUTH_GITHUB_SECRET = ''
 LOGGING['loggers']['root']['level'] = 'DEBUG'
 LOGGING['loggers']['celery']['level'] = 'DEBUG'
 LOGGING['loggers']['sleepy']['level'] = 'DEBUG'
+
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
