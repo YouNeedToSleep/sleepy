@@ -5,12 +5,18 @@
 <section class="home">
     <div class="row">
         <div class="large-12 columns">
-            <div class="large-8 columns">
+            <div class="large-6 columns">
                 <h1 class="logo"><img src="{% static 'img/logo-small.png' %}">YouNeedToSleep</h1>
             </div>
-            <div class="large-4 columns">
+            <div class="large-6 columns">
                 <ul class="button-group">
-                    <li><a href="#" class="button">{% trans 'Sign In' %}</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li>Logged in as {{ request.user }}</li>
+                        <li><a class="button" href="{% url 'sleepy-logout' %}">Logout</a></li>
+                    {% else %}
+                        {# <li><a class="button" href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a></li> #}
+                        <li><a class="button" href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

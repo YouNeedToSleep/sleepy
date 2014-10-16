@@ -1,4 +1,5 @@
 import os
+from django.core.urlresolvers import reverse_lazy
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 from django.utils.translation import ugettext_lazy as _
 
@@ -29,6 +30,9 @@ INSTALLED_APPS = (
 
     # For our REST Api
     'rest_framework',
+
+    # Social Authentication
+    'social.apps.django_app.default',
 
     # Sleepy apps
     'sleepy',
@@ -69,10 +73,6 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'src', 'sleepy', 'templates'),
-)
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
 )
 
 LANGUAGE_CODE = 'en-us'
@@ -160,18 +160,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Django security related settings.
 SECURE_SSL_REDIRECT = True
 
-# Commit to HTTPS only for 12 months (HSTS)
-SECURE_HSTS_SECONDS = 31536000
-
-# prevent framing
-SECURE_FRAME_DENY = True
-
-# Don't let the browser guess content-types
-SECURE_CONTENT_TYPE_NOSNIFF = True
-
-# Enable browser XSS Filter
-SECURE_BROWSER_XSS_FILTER = True
-
 # Force cookies to be https only (or at least tell the browsers to do so...)
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
@@ -183,3 +171,43 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'sleepy.core.social_backends.EmailAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGIN_URL = reverse_lazy('social:begin', args=('email',))
+LOGIN_REDIRECT_URL = reverse_lazy('sleepy-home')
+LOGIN_ERROR_URL = LOGIN_URL
+
+SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
+SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
+
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+SOCIAL_AUTH_FACEBOOK_SECRET = ''
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
+
+SOCIAL_AUTH_EMAIL_FORM_HTML = 'email_login.html'
+
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+SOCIAL_AUTH_USER_DETAILS_FIELDS = ('email',)
+
+# We need to add username if we have a user model with username, even if we
+# don't use the username.
+SOCIAL_AUTH_USER_FIELDS = ('username',) + SOCIAL_AUTH_USER_DETAILS_FIELDS
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+)

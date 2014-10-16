@@ -19,6 +19,14 @@ section {
                 padding-right: 1rem;
             }
         }
+
+        .button-group {
+            margin: 1rem 0 0 0;
+
+            & > li {
+                margin: 0 10px;
+            }
+        }
     }
 
     &.footer {

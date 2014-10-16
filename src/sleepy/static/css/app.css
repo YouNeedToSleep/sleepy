@@ -3607,7 +3607,11 @@ section.home {
   padding: 2rem 0;
   background-color: #eee; }
   section.home .logo img {
-    padding-right: 2rem; }
+    padding-right: 1rem; }
+  section.home .button-group {
+    margin: 1rem 0 0 0; }
+    section.home .button-group > li {
+      margin: 0 10px; }
 section.footer {
   background-color: #eee;
   padding: 2rem 0; }
