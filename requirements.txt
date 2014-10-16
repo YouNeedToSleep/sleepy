@@ -1,3 +1,4 @@
 # Python3 enabled versions
 -e git+https://github.com/julienaubert/django-uuidfield.git@python3#egg=django-uuidfield
 -e git+https://github.com/EnTeQuAk/babel.git@support/py3k#egg=babel
+-e git+https://github.com/omab/python-social-auth@d25b7934b212271ca95869ca84cb39adb6a80321#egg=python-social-auth
