@@ -21,10 +21,24 @@ section {
         }
 
         .button-group {
+            @include button-group-container();
+
             margin: 1rem 0 0 0;
 
             & > li {
+                @include button-group-style(
+                  $float:right
+                );
+
                 margin: 0 10px;
+
+                a {
+                    @include button();
+
+                    &.login {
+                        background-color: #dd4b39;
+                    }
+                }
             }
         }
     }
