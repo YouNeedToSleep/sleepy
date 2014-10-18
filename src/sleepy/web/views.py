@@ -12,7 +12,7 @@ class IndexView(TemplateView):
 
 
 class LogoutView(RedirectView):
-    url = reverse_lazy('home')
+    url = reverse_lazy('sleepy-home')
     permanent = False
 
     def dispatch(self, request, *args, **kwargs):
