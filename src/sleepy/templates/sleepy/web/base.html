@@ -8,9 +8,12 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta http-equiv="content-language" content="{{ LANGUAGE_CODE }}" />
+		<link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+		<link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 		<meta name="robots" content="noindex, nofollow" />
 		<meta name="siteinfo" content="{% static 'robots.txt' %}" />
 		<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0,width=device-width" />
+
 	    <title>{% block title %}YouNeedToSleep Today{% endblock title %}</title>
 
 	    {% block styles %}
