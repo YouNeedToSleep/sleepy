@@ -114,12 +114,6 @@ To start all of them (including the tls-server):
 Run the test-suite
 ------------------
 
-.. note::
-
-    The test-suite requires to have access to the ``sleepy.local`` domain.
-    You might need to add it to your ``/etc/hosts`` or use a DNS server like
-    ``dnsmasq``.
-
 .. code-block:: bash
 
     $ make test
@@ -127,21 +121,6 @@ Run the test-suite
 Resources
 ---------
 
-* `Documentation <http://youneedtosleep.today/docs/>`_
+* `Documentation <http://youneedtosleep.today/>`_
 * `Bug Tracker <https://github.com/YouNeedToSleep/sleepy/issues>`_
 * `Code <https://github.com/YouNeedToSleep/sleepy>`_
-=======
-.. image:: https://travis-ci.org/YouNeedToSleep/sleepy.png?branch=master
-        :target: https://travis-ci.org/YouNeedToSleep/sleepy
-
-
-Time Tracker
-
-* Free software: BSD license
-* Documentation: https://sleepy.readthedocs.org.
-
-Features
---------
-
-* TODO
->>>>>>> 718a6fd16077fb2cd8f323cf92355ab9b9ed587b
